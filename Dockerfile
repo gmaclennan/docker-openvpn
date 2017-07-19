@@ -12,6 +12,4 @@ COPY openvpn.sh /bin/openvpn.sh
 WORKDIR /pia
 
 ENV REGION="US East"
-ENV USERNAME=""
-ENV PASSWORD=""
 ENTRYPOINT ["openvpn.sh"]

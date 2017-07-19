@@ -3,7 +3,7 @@
 set -e -u -o pipefail
 
 
-if [ -n "$USERNAME" -a -n "$PASSWORD" ]; then
+if [ -n "${USERNAME:-""}" -a -n "${PASSWORD:-""}" ]; then
   echo "$USERNAME" > auth.conf
   echo "$PASSWORD" >> auth.conf
   chmod 600 auth.conf
@@ -14,4 +14,4 @@ if [ -n "$REGION" ]; then
   set -- '--config' "${REGION}.ovpn" "$@"
 fi
 
-openvpn "$@"
+exec openvpn "$@"
