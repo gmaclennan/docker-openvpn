@@ -6,7 +6,8 @@ RUN yum install -y epel-release && \
 	unzip -q /temp.zip -d /pia && \
 	rm -f /temp.zip && \
 	yum remove -y epel-release unzip && \
-	yum clean all
+	yum clean all && \
+	groupadd -r vpn
 
 COPY openvpn.sh /bin/openvpn.sh
 WORKDIR /pia
