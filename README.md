@@ -2,11 +2,13 @@
 
 # Private Internet Access
 A Centos Docker container for connecting to the PIA servers using OpenVPN, based on [colinherbert/pia-openvpn](https://hub.docker.com/r/colinhebert/pia-openvpn/)
+Has a firewall/killswitch configured, so your information cannot be leaked if the vpn connection fails.
 
 ## Improvements
 * Updated Dockerfile to fetch new configuration directly from PIA on each build
 * Changed openvpn.sh so it works with Centos
 * Updated README
+* Added firewall/killswitch support
 
 # What is Private Internet Access
 Private Internet Access VPN Service encrypts your connection and provides you with an anonymous IP to protect your privacy.
@@ -46,7 +48,7 @@ The IP address returned after this execution should be different from the IP add
 # Advanced usage
 
 ## Additional arguments for the openvpn client
-Every parameter provided to the `docker run` command is directly passed as an argument to the [openvpn executable](https://openvpn.net/man.html).
+Every parameter provided to the `docker run` command is directly passed as an argument to the [openvpn executable](https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage).
 
 This will run the openvpn client with the `--pull` option:
 ```Shell
