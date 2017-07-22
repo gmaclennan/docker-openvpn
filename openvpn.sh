@@ -47,4 +47,8 @@ done
 
 activate_firewall
 
+if [ -c /dev/net/tun ]; then
+  mknod -m 0666 /dev/net/tun c 10 200
+fi
+
 exec sg vpn -c "openvpn $ARGS"

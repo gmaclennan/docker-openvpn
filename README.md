@@ -9,6 +9,7 @@ Has a firewall/killswitch configured, so your information cannot be leaked if th
 * Changed openvpn.sh so it works with Centos
 * Updated README
 * Added firewall/killswitch support
+* Automatically creates tunnel device
 
 # What is Private Internet Access
 Private Internet Access VPN Service encrypts your connection and provides you with an anonymous IP to protect your privacy.
@@ -21,7 +22,7 @@ The goal is to start this container first then run other container within the PI
 
 ## Starting the client
 ```Shell
-docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name=pia -d \
+docker run --cap-add=NET_ADMIN --name=pia -d \
   --restart=always \
   --dns 209.222.18.222 --dns 209.222.18.218 \
   -e 'REGION=<region>' \
@@ -32,7 +33,7 @@ docker run --cap-add=NET_ADMIN --device=/dev/net/tun --name=pia -d \
 
 Substitute the environment variables `REGION`, `USERNAME`, and `PASSWORD` as needed. Note that `REGION` is optional, and defaults to `US East`.
 
-Due to the nature of the VPN client, this container must be started with some additional privileges, `--cap-add=NET_ADMIN` and `--device=/dev/net/tun` make sure that the tunnel can be created from within the container.
+Due to the nature of the VPN client, this container must be started with some additional privileges. `--cap-add=NET_ADMIN` makes sure that the tunnel can be created from within the container.
 
 Starting the container in privileged mode would also achieve this, but keeping the privileges to the minimum required is preferable.
 
