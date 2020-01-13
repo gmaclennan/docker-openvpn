@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM arm64v8/centos:latest
 
 RUN yum install -y epel-release && \
 	yum install -y openvpn unzip net-tools && \
